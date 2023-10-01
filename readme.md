@@ -1,0 +1,3 @@
+/metrics
+/docs
+/redoc
