@@ -1,5 +1,6 @@
 # python -m uvicorn main:app --reload --env-file config.env
 import os
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from sqlalchemy.orm import Session
 
@@ -20,6 +21,7 @@ from database import SessionLocal, engine
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app)
 
 
 # Dependency
